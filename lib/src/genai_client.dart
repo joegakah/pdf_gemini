@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:pdf_gemini/pdf_gemini.dart';
-import 'package:pdf_gemini/src/genai_generated_response_model.dart';
+import 'package:pdf_gemini/src/models/genai_response.dart';
 
 /// A client for interacting with the Gemini API with pdf
 class GenaiClient {

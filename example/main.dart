@@ -2,7 +2,7 @@
 
 import 'dart:io';
 import 'package:pdf_gemini/pdf_gemini.dart';
-import 'package:pdf_gemini/src/genai_generated_response_model.dart'; // Ensure this package is included in your pubspec.yaml
+import 'package:pdf_gemini/src/models/genai_response.dart'; // Ensure this package is included in your pubspec.yaml
 
 void main() async {
   // Replace with your actual Gemini API key

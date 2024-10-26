@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 import 'package:dio/dio.dart';
-import 'package:pdf_gemini/src/genai_file_model.dart';
+import 'package:pdf_gemini/src/models/genai_file.dart';
 
 /// A manager for handling file uploads and retrievals for the Gemini API.
 class GenaiFileManager {
