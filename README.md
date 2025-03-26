@@ -73,7 +73,13 @@ void main() {
       final testFile = File('your_file_path').readAsBytesSync();
 
       try {
-        await genaiService.promptDocument('file_name', 'pdf', testFile, 'your_prompt');
+        await genaiService.promptDocument(
+          fileName: 'Your file name',
+          fileType: 'pdf',
+          fileData: testFile,
+          prompt: 'your prompt',
+          model: 'gemini-1.5-flash',
+        );
       } catch (e) {
         fail('Failed: $e');
       }
@@ -90,7 +96,3 @@ Contributions are welcome! If you'd like to improve this package, feel free to f
 ## License
 
 This project is licensed under the BSD 3-clause license - see the [LICENSE](LICENSE) file for details.
-
----
-
-This `README.md` gives clear instructions on how to install, use, and test the package, and it outlines best practices for managing API keys securely. If your package has additional features, you can expand the documentation to cover those.
