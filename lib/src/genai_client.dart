@@ -25,12 +25,13 @@ class GenaiClient {
   ///
   /// Takes a [fileName], [fileType], [fileData], and a [prompt] string.
   /// Returns a [GenaiGeneratedResponseModel] containing the generated content.
-  Future<GenaiGeneratedResponseModel> promptDocument(
-    String fileName,
-    String fileType,
-    Uint8List fileData,
-    String prompt,
-  ) async {
+  Future<GenaiGeneratedResponseModel> promptDocument({
+    required String fileName,
+    required String fileType,
+    required Uint8List fileData,
+    required String prompt,
+    String? model,
+  }) async {
     try {
       // Get the genai file by checking if it exists; otherwise, upload it.
       final file = await genaiFileManager.getGenaiFile(
@@ -39,8 +40,20 @@ class GenaiClient {
         fileData,
       );
 
+      /// Sends a POST request to the specified model endpoint to generate content.
+      ///
+      /// The request is sent to the URL constructed using the base URL, the model name
+      /// (defaulting to 'gemini-1.5-flash' if not provided), and the API key.
+      ///
+      /// Parameters:
+      /// - `baseUrl`: The base URL of the API.
+      /// - `model`: The model name to use for content generation. Defaults to 'gemini-1.5-flash' if null.
+      /// - `geminiApiKey`: The API key for authentication.
+      ///
+      /// Returns:
+      /// A `Future` that resolves to the response of the POST request.
       final response = await Dio().post(
-        '$baseUrl/models/gemini-1.5-flash:generateContent?key=$geminiApiKey',
+        '$baseUrl/models/${model ?? 'gemini-1.5-flash'}:generateContent?key=$geminiApiKey',
         options: Options(
           headers: {'Content-Type': 'application/json'},
         ),
