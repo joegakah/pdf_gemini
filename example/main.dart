@@ -28,11 +28,12 @@ void main() async {
 
     // Generate content using the uploaded file
     String prompt = "Can you add a few more lines to this poem?";
+
     GenaiGeneratedResponseModel response = await genaiClient.promptDocument(
-      uploadedFile.displayName,
-      uploadedFile.mimeType,
-      file.readAsBytesSync(),
-      prompt,
+      fileName: uploadedFile.displayName,
+      fileType: uploadedFile.mimeType,
+      fileData: file.readAsBytesSync(),
+      prompt: prompt,
     );
 
     print('Generated Text: ${response.text}');

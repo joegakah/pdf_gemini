@@ -9,15 +9,15 @@ void main() {
     final genaiService = GenaiClient(geminiApiKey: geminiApiKey);
 
     test('Prompt PDF Test', () async {
-      // Create a temporary test file
       final testFile = File('').readAsBytesSync();
 
       try {
         await genaiService.promptDocument(
-          'Your file name',
-          'pdf',
-          testFile,
-          'your prompt',
+          fileName: 'Your file name',
+          fileType: 'pdf',
+          fileData: testFile,
+          prompt: 'your prompt',
+          model: 'gemini-1.5-flash',
         );
       } catch (e) {
         fail('Failed: $e');
