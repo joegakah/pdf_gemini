@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Be able to Prompt document with chosen genai model.
+
 ## 0.0.3
 
 * Fix Retreving Files from Genai server.
